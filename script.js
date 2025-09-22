@@ -1,7 +1,7 @@
 const typedWords = ["First National Bank","Secure Banking", "Smart Savings", "Instant Loans", "Digital Banking", "Future Finance"];
 let typedIndex = 0;
 let charIndex = 0;
-const typingSpeed = 120; // ms per character
+const typingSpeed = 120;
 const erasingSpeed = 60;
 const delayBetweenWords = 1500;
 
@@ -32,7 +32,6 @@ function eraseWords() {
   }
 }
 
-// animation
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(typeWords, 500);
 });
