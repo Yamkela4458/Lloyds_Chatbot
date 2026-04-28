@@ -1,70 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FNB Chatbot</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lloyds Learning Assistant</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<div class="floating-words">
-  <span>Welcome</span>
-  <span>Bank</span>
-  <span>FNB</span>
-  <span>Secure</span>
-  <span>Digital</span>
-  <span>Smart</span>
-  <span>Future</span>
-</div>
 
 <body>
+<!-- Background  -->
+<div class="floating-words">
+  <span>Financial Literacy</span>
+</div>
 
-</br>
-</br>
+<!-- Header -->
 <section class="typed-words-section">
-  <h2><strong>How Can We Help You?</strong><span id="typed-words"></span></h2>
+  <h2>
+    <strong>How can we support your learning today?</strong>
+    <br>
+    <span id="typed-words"></span>
+  </h2>
 </section>
-</br>
-</br>
-</br>
 
+<!-- Chat -->
   <div class="chat-container">
-    <div class="chat-header">
-      <img src="images/download.png" alt="FNB Logo" class="logo" />
+  <div class="chat-header">
+    <img src="images/Lloyds-Bank-Logo.jpg" alt="Banking Assistant" class="logo" />
+    <h1 class="typewriter-glow">Helping Britain <b>Prosper</b></h1>
+  </div>
 
-      <h1 class="typewriter-glow" id="fnb-heading">Chat Assistant...</h1>
-
-    </div>
-
-    <div class="chat-box" id="chat-box">
-      <div class="bot-message">Hi there! I'm your chat assistant. How can I assist you today?</div>
-    </div>
-
-    <div class="chat-input">
-      <input type="text" id="user-input" placeholder="Type your message..." />
-      <button onclick="sendMessage()">Send</button>
+  <div class="chat-box" id="chat-box">
+    <div class="bot-message">
+      Hello there. I can help you understand budgeting, savings, loans, and digital banking safety. Where would you like to start?
     </div>
   </div>
-</br>
-</br>
-</br>
+
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Ask a question..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+</div>
+
+<!-- learning paths -->
 <div class="chat-prompts">
-  <p>We are here for you:</p>
+  <p><strong>Start here</strong></p>
   <ul>
-    <li><a href="https://www.fnb.co.za/ways-to-bank/digital/index.html?srsltid=AfmBOopkD7GXQjvg3eCmD6EBDdKLnXtWJNrbIoPZUWahB1-8zG34X073" onclick="sendMessage('Check my balance')"> Check my balance</a></li>
-    <li><a href="https://www.fnb.co.za/bank/personal-banking.html" onclick="sendMessage('Open a new account')"> Open a new account</a></li>
-    <li><a href="https://www.fnb.co.za/borrow.html" onclick="sendMessage('How do I get a loan?')">Apply for a loan?</a></li>
-    <li><a href="https://www.fnb.co.za/complaints-resolution/talkToUs.html" onclick="sendMessage('Speak to a consultant')"> Speak to a consultant</a></li>
-    <li><a href="https://www.fnb.co.za/locators/atm-locator.html" onclick="sendMessage('Find nearest ATM')"> Find nearest ATM</a></li>
+    <li><a href="https://www.lloydsbank.com/search-results.html?query=Top+budgeting+tips" onclick="sendMessage('budgeting')">Budgeting basics</a></li>
+    <li><a href="https://answers.lloydsbank.com/FAQs.html?query=Savings+account&referrerPageUrl=https%3A%2F%2Fwww.lloydsbank.com%2Fsearch-results.html&tabOrder=.%2Findex.html%2Cproducts%2Chelp_articles%2Cfaqs%2Cpromotions%2Ctoolscalculators%2Cevents%2Clocations" onclick="sendMessage('savings')">Savings accounts</a></li>
+    <li><a href="https://answers.lloydsbank.com/FAQs.html?query=Loan&tabOrder=.%2Findex.html%2Cproducts%2Chelp_articles%2Cfaqs%2Cpromotions%2Ctoolscalculators%2Cevents%2Clocations&referrerPageUrl=https%3A%2F%2Fwww.lloydsbank.com%2Fsearch-results.html" onclick="sendMessage('loan')">How loans work</a></li>
+    <li><a href="https://answers.lloydsbank.com/FAQs.html?query=banking&tabOrder=.%2Findex.html%2Cproducts%2Chelp_articles%2Cfaqs%2Cpromotions%2Ctoolscalculators%2Cevents%2Clocations&referrerPageUrl=https%3A%2F%2Fwww.lloydsbank.com%2Fsearch-results.html" onclick="sendMessage('security')">Digital banking safety</a></li>
   </ul>
 </div>
 
- <script src="script.js"></script> 
+<!-- Script-->
+<script src="script.js"></script>
 
 <footer class="site-footer">
-    <p>Created for educational purposes</p>
-    <p><strong>Yamkela Lusithi</strong> © 2025</p>
+  <p><b>For educational purposes</b></p>
+  <p><strong>Yamkela Lusithi</strong> &copy; 2025</p>
 </footer>
 
 </body>
 </html>
-
