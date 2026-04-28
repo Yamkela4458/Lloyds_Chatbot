@@ -1,81 +1,90 @@
-const typedWords = ["First National Bank","Secure Banking", "Smart Savings", "Instant Loans", "Digital Banking", "Future Finance"];
-let typedIndex = 0;
+// Typing
+const typedWords = [
+  "Financial Literacy",
+  "Budgeting Skills",
+  "Saving Habits",
+  "Loan Understanding",
+  "Digital Safety"
+];
+
+let index = 0;
 let charIndex = 0;
-const typingSpeed = 120;
-const erasingSpeed = 60;
-const delayBetweenWords = 1500;
 
-function typeWords() {
-  const span = document.getElementById('typed-words');
-  if (!span) return;
+function typeEffect() {
+  const el = document.getElementById("typed-words");
+  if (!el) return;
 
-  if (charIndex < typedWords[typedIndex].length) {
-    span.textContent += typedWords[typedIndex].charAt(charIndex);
+  const word = typedWords[index];
+
+  if (charIndex < word.length) {
+    el.textContent += word.charAt(charIndex);
     charIndex++;
-    setTimeout(typeWords, typingSpeed);
+    setTimeout(typeEffect, 90);
   } else {
-    setTimeout(eraseWords, delayBetweenWords);
+    setTimeout(eraseEffect, 1200);
   }
 }
 
-function eraseWords() {
-  const span = document.getElementById('typed-words');
-  if (!span) return;
+function eraseEffect() {
+  const el = document.getElementById("typed-words");
+  if (!el) return;
 
   if (charIndex > 0) {
-    span.textContent = typedWords[typedIndex].substring(0, charIndex - 1);
+    el.textContent = el.textContent.slice(0, -1);
     charIndex--;
-    setTimeout(eraseWords, erasingSpeed);
+    setTimeout(eraseEffect, 50);
   } else {
-    typedIndex = (typedIndex + 1) % typedWords.length;
-    setTimeout(typeWords, typingSpeed);
+    index = (index + 1) % typedWords.length;
+    setTimeout(typeEffect, 200);
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(typeWords, 500);
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(typeEffect, 500);
 });
 
-const chatBox = document.getElementById("chat-box");
-const userInput = document.getElementById("user-input");
-
-const replies = {
-  hello: "Hi there! 😊 How can I assist you today?",
-  "hi":"Hi there! 😊 How can I assist you today?",
-  "how are you": "I'm just a Bot, but I’m always running at 100%! How can I help?",
-  "balance": "To check your balance, please log in to your FNB App or Online Banking.",
-  "open account": "You can open an account online at www.fnb.co.za or visit your nearest branch.",
-  "loan": "FNB offers personal loans, business loans, and more. Click on Apply for loan below to apply online?",
-  bye: "Goodbye! If you need anything else, I'm always here.",
-  default: "I'm not sure how to answer that. Try asking about accounts, loans, or how to contact us."
+// Chat responses
+const responses = {
+  hello: "Hello. How can I support your learning today?",
+  hi: "Hello. How can I support your learning today?",
+  budgeting: "Budgeting helps you manage income and expenses effectively.",
+  savings: "A savings account helps you store money securely and earn interest.",
+  loan: "A loan is borrowed money that must be repaid with interest.",
+  security: "Protect your banking details. Never share passwords or PINs.",
+  default: "Please choose a topic: budgeting, savings, loans, or security."
 };
 
+// user input
 function sendMessage() {
-  const message = userInput.value.trim();
-  if (message === "") return;
+  const input = document.getElementById("user-input");
+  const message = input.value.trim().toLowerCase();
 
-  displayMessage(message, "user");
-  userInput.value = "";
+  if (!message) return;
+
+  addMessage(input.value, "user");
+  input.value = "";
 
   setTimeout(() => {
-    const response = getBotReply(message.toLowerCase());
-    displayMessage(response, "bot");
-  }, 700);
+    addMessage(getResponse(message), "bot");
+  }, 500);
 }
 
-function displayMessage(message, type) {
+// Render message
+function addMessage(text, type) {
+  const box = document.getElementById("chat-box");
+
   const div = document.createElement("div");
   div.className = type === "user" ? "user-message" : "bot-message";
-  div.textContent = message;
-  chatBox.appendChild(div);
-  chatBox.scrollTop = chatBox.scrollHeight;
+  div.textContent = text;
+
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
 }
 
-function getBotReply(input) {
-  for (let key in replies) {
-    if (input.includes(key)) {
-      return replies[key];
-    }
+// input to response
+function getResponse(input) {
+  for (let key in responses) {
+    if (input.includes(key)) return responses[key];
   }
-  return replies.default;
+  return responses.default;
 }
